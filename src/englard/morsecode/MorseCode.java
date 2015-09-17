@@ -44,6 +44,7 @@ public class MorseCode {
 		}
 		return buffer.toString();
 	}
+
 	@Test
 	public String decode(String code) {
 		StringBuffer buffer = new StringBuffer();
@@ -58,10 +59,10 @@ public class MorseCode {
 					buffer.append(mCE);
 					break;
 				} else if (messageList[i].equals("")) { // two spaces since
-															// splitter used one
-															// as a deliminator
+														// splitter used one
+														// as a deliminator
 					buffer.append(" ");
-					i++; //skip the next space since three spaces come together
+					i++; // skip the next space since three spaces come together
 					break;
 				}
 			}
