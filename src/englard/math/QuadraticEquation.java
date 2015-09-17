@@ -20,11 +20,11 @@ public class QuadraticEquation {
 		this.b = b;
 		this.c = c;
 	}
-	@Test
+	
 	public double getPositiveX() {
 		return (-b + Math.sqrt(b * b - (4 * a * c))) / (2 * a);
 	}
-	@Test
+	
 	public double getNegativeX() {
 		return (-b - Math.sqrt(b * b - (4 * a * c))) / (2 * a);
 	}

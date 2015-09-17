@@ -25,7 +25,7 @@ public class ScrabbleDictionary {
 
 	}
 
-	@Test
+	
 	/**
 	 * @return true if the dictionary contains the word, otherwise false.
 	 */

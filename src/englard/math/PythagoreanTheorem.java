@@ -16,7 +16,7 @@ public class PythagoreanTheorem {
 	/**
 	 * Sets the value of A and B and computes C
 	 */
-	@Test
+	
 	public void setAB(double a, double b) {
 		this.a = a;
 		this.b = b;
@@ -27,7 +27,7 @@ public class PythagoreanTheorem {
 	/**
 	 * Sets the value of A and C and computes B
 	 */
-	@Test
+	
 	public void setAC(double a, double c) {
 		this.a = a;
 		this.c = c;
@@ -37,7 +37,7 @@ public class PythagoreanTheorem {
 	/**
 	 * Sets the value of B and C and computes A
 	 */
-	@Test
+	
 	public void setBC(double b, double c) {
 		this.b = b;
 		this.c = c;

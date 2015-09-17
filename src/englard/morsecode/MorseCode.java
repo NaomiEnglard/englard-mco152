@@ -12,7 +12,7 @@ public class MorseCode {
 
 	}
 
-	@Test
+	
 	public String encode(String message) {
 		message = message.toUpperCase(); // convert message to upercase since
 											// the mosrse code enum values are
@@ -45,7 +45,7 @@ public class MorseCode {
 		return buffer.toString();
 	}
 
-	@Test
+	
 	public String decode(String code) {
 		StringBuffer buffer = new StringBuffer();
 		// create a string array to hold each "letter" of the code
