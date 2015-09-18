@@ -1,15 +1,23 @@
 package englard.morsecode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Test;
 
 public class MorseCode {
 	private String codedMessage;
 	private String decodedMessage;
+	private HashMap<String, String> map;
 
 	public MorseCode() {
-
+		//add all values in enum to the map
+		for(MorseCodeEnum mCE : MorseCodeEnum.values()){
+			String letter = mCE.toString();
+			String code = mCE.getCode();
+			map.put(letter, code ); //add the letter maped to its morse code equivlant
+			map.put(code, letter); //add the code map it to its letter
+		}
 	}
 
 	
@@ -17,12 +25,16 @@ public class MorseCode {
 		message = message.toUpperCase(); // convert message to upercase since
 											// the mosrse code enum values are
 											// upercase
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		// create an array to hold each letter of the message
 		char[] messageList = message.toCharArray();
 		// loop through each letter
 		for (int i = 0; i < messageList.length; i++) {
-			for (MorseCodeEnum mCE : MorseCodeEnum.values())
+			builder.append(map.get(messageList[i]));
+		}
+		return builder.toString();
+			
+			/*for (MorseCodeEnum mCE : MorseCodeEnum.values())
 				// find the letter as a enum
 				if (messageList[i] == (mCE.toString().charAt(0))) {
 					// append the code version to string that will be returned
@@ -43,6 +55,7 @@ public class MorseCode {
 				}
 		}
 		return buffer.toString();
+		*/
 	}
 
 	

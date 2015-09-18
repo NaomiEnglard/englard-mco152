@@ -14,7 +14,7 @@ public class ScrabbleDictionary {
 
 	public ScrabbleDictionary() throws FileNotFoundException {
 		wordList = new ArrayList<String>();
-		File aFile = new File("C:\\Users\\Naami\\workspace2\\Schwimmer\\us.dic");
+		File aFile = new File("./us.dic");
 		Scanner scanner = new Scanner(aFile);
 		while (scanner.hasNext()) {
 			wordList.add(scanner.next());
