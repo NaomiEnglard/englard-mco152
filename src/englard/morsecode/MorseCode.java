@@ -11,16 +11,17 @@ public class MorseCode {
 	private HashMap<String, String> map;
 
 	public MorseCode() {
-		//add all values in enum to the map
-		for(MorseCodeEnum mCE : MorseCodeEnum.values()){
+		// add all values in enum to the map
+		map = new HashMap<String, String>();
+		for (MorseCodeEnum mCE : MorseCodeEnum.values()) {
 			String letter = mCE.toString();
 			String code = mCE.getCode();
-			map.put(letter, code ); //add the letter maped to its morse code equivlant
-			map.put(code, letter); //add the code map it to its letter
+			this.map.put(letter, code); // add the letter maped to its morse
+										// code equivlant
+			this.map.put(code, letter); // add the code map it to its letter
 		}
 	}
 
-	
 	public String encode(String message) {
 		message = message.toUpperCase(); // convert message to upercase since
 											// the mosrse code enum values are
@@ -30,58 +31,52 @@ public class MorseCode {
 		char[] messageList = message.toCharArray();
 		// loop through each letter
 		for (int i = 0; i < messageList.length; i++) {
-			builder.append(map.get(messageList[i]));
+			// the space between words gets converted into three spaces
+			// in the morseCoe message
+			if (messageList[i] == ' ') {
+				builder.append("  "); // only two spaces since the third will
+				// be put after the previous letter
+
+			}
+			// if the character is not a space get the morse code version and
+			// then put a single space after to seperate letters
+			else {
+				// covert the letter from char to string and get its code
+				String codedLetter = map.get(String.valueOf(messageList[i]));
+				builder.append(codedLetter);
+				// if not that last letter add a space after the letter
+				if (i != (message.length() - 1)) {
+					builder.append(" ");
+				}
+			}
 		}
 		return builder.toString();
-			
-			/*for (MorseCodeEnum mCE : MorseCodeEnum.values())
-				// find the letter as a enum
-				if (messageList[i] == (mCE.toString().charAt(0))) {
-					// append the code version to string that will be returned
-					buffer.append(mCE.getCode());
-					// between each letter should be a space
-					if (i != (messageList.length - 1)) { // if its not the last
-															// letter put a
-															// space
-						buffer.append(" ");
-					}
-					break;
-				} else if (messageList[i] == ' ') {
-					// the space between words gets converted into three spaces
-					// in the morseCoe message
-					buffer.append("  "); // only two spaces since the third will
-											// be put after the previous letter
-					break;
-				}
-		}
-		return buffer.toString();
-		*/
+
 	}
 
-	
 	public String decode(String code) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		// create a string array to hold each "letter" of the code
 		String[] messageList = code.split(" ");
 		for (int i = 0; i < messageList.length; i++) { // translate each letter
 			// find which letter should be used instead of a morse code string
-			for (MorseCodeEnum mCE : MorseCodeEnum.values()) {
-				// if the morse code string is the letter add the letter to
-				// string buffer
-				if (mCE.getCode().equals(messageList[i])) {
-					buffer.append(mCE);
-					break;
-				} else if (messageList[i].equals("")) { // two spaces since
-														// splitter used one
-														// as a deliminator
-					buffer.append(" ");
-					i++; // skip the next space since three spaces come together
-					break;
-				}
+			if (messageList[i].equals("")) { // two spaces since splitter used
+												// one as a deliminator
+				builder.append(" ");
+				i++; // skip the next space since three spaces come together
+
+			} else {
+				builder.append(map.get(messageList[i]));
 			}
+
 		}
-		return buffer.toString();
+
+		return builder.toString();
 
 	}
 
+	public static void main(String[] args) {
+		MorseCode m = new MorseCode();
+		m.encode("s E aa");
+	}
 }
