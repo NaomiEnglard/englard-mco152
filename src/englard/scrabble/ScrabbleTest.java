@@ -8,12 +8,12 @@ import junit.framework.Assert;
 
 public class ScrabbleTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testcontains() {
 		try {
 			ScrabbleDictionary sD = new ScrabbleDictionary();
-			boolean found = sD.contains("pickle");
-			Assert.assertEquals(true, found);
+			Assert.assertTrue(sD.contains("pickle"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
