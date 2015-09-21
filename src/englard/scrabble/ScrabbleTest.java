@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 
+@SuppressWarnings("deprecation")
 public class ScrabbleTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testcontains() {
 		try {
