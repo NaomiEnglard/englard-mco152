@@ -1,7 +1,10 @@
 package englard.scrabble;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -11,14 +14,17 @@ public class ScrabbleDictionary {
 
 	private HashSet<String> wordSet;
 
-	public ScrabbleDictionary() throws FileNotFoundException {
+	public ScrabbleDictionary() throws IOException {
 		wordSet = new HashSet<String>();
 		File aFile = new File("./us.dic");
-		Scanner scanner = new Scanner(aFile);
-		while (scanner.hasNext()) {
-			wordSet.add(scanner.next());
+		BufferedReader in = new BufferedReader(new FileReader("aFile"));
+		String word;
+
+		while ((word = in.readLine()) != null) {
+			wordSet.add(word);
+
 		}
-		scanner.close();
+		in.close();
 
 	}
 
