@@ -63,17 +63,19 @@ public class ProdjectileGui extends JFrame {
 		// on click of enter button
 		enter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				//create a new prodjectile withe 3 given inputs, convert the inputed strings to double
+				// create a new prodjectile withe 3 given inputs, convert the
+				// inputed strings to double
 				Prodjectile p = new Prodjectile(Double.parseDouble(textField1
 						.getText()), Double.parseDouble(textField2.getText()),
 						Double.parseDouble(textField3.getText()));
 				StringBuilder answer = new StringBuilder();
 				answer.append("x =");
-				answer.append(Double.toString(p.getX()) );
+				answer.append(Double.toString(p.getX()));
 				answer.append("      y= ");
-				answer.append( Double.toString(p.getY()));
-				output.setText( answer.toString()); //convert double answer to string
-				
+				answer.append(Double.toString(p.getY()));
+				output.setText(answer.toString()); // convert double answer to
+													// string
+
 			}
 		});
 
