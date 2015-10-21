@@ -22,27 +22,29 @@ public class TopTenSightings {
 			Gson gson = new Gson();
 			UFOSightingLIst list = gson.fromJson(in, UFOSightingLIst.class);
 			in.close();
-			
-			//keep track of times a location appears - in hashmap of <locationName, numTimes>
+
+			// keep track of times a location appears - in hashmap of
+			// <locationName, numTimes>
 			HashMap<String, Integer> locationMap = new HashMap<String, Integer>();
 			Iterator<UFOSighting> iter = list.iterator();
 			while (iter.hasNext()) {
 				String location = iter.next().getLocation();
 				// if the location is in the map incrment numTimes
 				if (locationMap.containsKey(location)) {
-					locationMap.replace(location,(locationMap.get(location) + 1));
+					locationMap.replace(location,
+							(locationMap.get(location) + 1));
 				} else {// else create new location in map
 					locationMap.put(location, 1);
 				}
 
 			}// end while
 
-			//got all values and sort, take the top ten
+			// got all values and sort, take the top ten
 			List<Integer> allValues = new ArrayList<Integer>(
 					locationMap.values());
 			Collections.sort(allValues, Collections.reverseOrder());
 			allValues = allValues.subList(0, 10); // get only the 10 values
-			
+
 			// find locations that match top ten numTimes
 			ArrayList<String> cityAndNumber = new ArrayList<String>();
 			StringBuilder build = new StringBuilder();
@@ -61,7 +63,7 @@ public class TopTenSightings {
 					}
 				}
 			}
-			Collections.sort(cityAndNumber); //display results in number order
+			Collections.sort(cityAndNumber); // display results in number order
 			System.out.println(cityAndNumber);
 
 		} catch (FileNotFoundException e) {
