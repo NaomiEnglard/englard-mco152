@@ -9,74 +9,45 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.Map.Entry;
 
 import com.google.gson.Gson;
 
 public class TopTenSightings {
-	public static void main(String[] args) {
-		try {
-			// read file into list of ufo sightings
-			BufferedReader in = new BufferedReader(new FileReader(
-					"./ufo_awesome.json"));
-			Gson gson = new Gson();
-			UFOSightingLIst list = gson.fromJson(in, UFOSightingLIst.class);
-			in.close();
+	public static void main(String[] args) throws IOException {
+		HashMap<String, Integer> locationMap = new HashMap<String, Integer>();
+		// read file into list of ufo sightings
+		BufferedReader in = new BufferedReader(new FileReader(
+				"./ufo_awesome.json"));
+		Gson gson = new Gson();
+		UFOSightingLIst list = gson.fromJson(in, UFOSightingLIst.class);
+		in.close();
 
-			// keep track of times a location appears - in hashmap of
-			// <locationName, numTimes>
-			HashMap<String, Integer> locationMap = new HashMap<String, Integer>();
-			Iterator<UFOSighting> iter = list.iterator();
-			while (iter.hasNext()) {
-				String location = iter.next().getLocation();
-				// if the location is in the map incrment numTimes
-				if (locationMap.containsKey(location)) {
-					locationMap.replace(location,
-							(locationMap.get(location) + 1));
-				} else {// else create new location in map
-					locationMap.put(location, 1);
-				}
-
-			}// end while
-			
-			
-			
-			
-			
-			// got all values and sort, take the top ten
-			List<Integer> allValues = new ArrayList<Integer>(
-					locationMap.values());
-			Collections.sort(allValues, Collections.reverseOrder());
-			allValues = allValues.subList(0, 10); // get only the 10 values
-
-			// find locations that match top ten numTimes
-			ArrayList<String> cityAndNumber = new ArrayList<String>();
-			StringBuilder build = new StringBuilder();
-			for (Entry<String, Integer> entry : locationMap.entrySet()) {
-				for (int i = 0; i < allValues.size(); i++) {
-					if (allValues.get(i).equals(entry.getValue())) {
-						build.append(entry.getValue());
-						build.append(" - ");
-						build.append(entry.getKey());
-						build.append("\n");
-						cityAndNumber.add(build.toString());
-						build.setLength(0);// empty builder
-						allValues.remove(i); // dont keep looking for the number
-												// if it was found
-						break;
-					}
-				}
+		// keep track of times a location appears - in hashmap of
+		// <locationName, numTimes>
+		Iterator<UFOSighting> iter = list.iterator();
+		while (iter.hasNext()) {
+			String location = iter.next().getLocation();
+			// if the location is in the map incrment numTimes
+			if (locationMap.containsKey(location)) {
+				locationMap.replace(location, (locationMap.get(location) + 1));
+			} else {// else create new location in map
+				locationMap.put(location, 1);
 			}
-			Collections.sort(cityAndNumber); // display results in number order
-			System.out.println(cityAndNumber);
 
-		} catch (FileNotFoundException e) {
-			System.out.println("file not found");
-		} catch (IOException e) {
-			System.out.println("IO Exceptions");
+		}// end while
+
+		NumComparator nc = new NumComparator(locationMap);
+		TreeMap<String, Integer> sortedMap = new TreeMap<String, Integer>(nc);
+		sortedMap.putAll(locationMap);
+		Iterator<?> iterTwo = sortedMap.entrySet().iterator();
+		int count = 0;
+		while (count < 10) {
+			count++;
+			System.out.println(iterTwo.next());
 
 		}
 
 	}
-
 }
