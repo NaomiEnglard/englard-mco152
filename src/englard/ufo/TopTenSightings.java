@@ -38,7 +38,11 @@ public class TopTenSightings {
 				}
 
 			}// end while
-
+			
+			
+			
+			
+			
 			// got all values and sort, take the top ten
 			List<Integer> allValues = new ArrayList<Integer>(
 					locationMap.values());
