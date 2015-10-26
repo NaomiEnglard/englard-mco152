@@ -13,7 +13,7 @@ public class SmileFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public SmileFrame() {
-		setTitle("Sad Face");
+		setTitle("Smiley Face");
 		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

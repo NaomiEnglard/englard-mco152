@@ -14,20 +14,20 @@ public class SmileComponent extends JComponent {
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		g.setColor(Color.YELLOW);
 		g.fillOval(25, 50, 310, 310);
-		
+
 		g.setColor(Color.BLACK);
-		g.drawLine(160, 120,90,90);
-		g.drawLine(210, 120, 300, 100);
-		
+		g.drawArc(90, 100, 55, 100, 45, 100);
+		g.drawArc(210, 100, 55, 100, 45, 100);
+		// g.drawArc(x, y, width, height, startAngle, arcAngle);
 		g.setColor(Color.GREEN);
-		g.fillOval(90, 120, 75, 75);
-		g.fillOval(215, 120, 75, 75);
-		
+		g.fillOval(90, 135, 50, 50);
+		g.fillOval(210, 135, 50, 50);
+
 		g.setColor(Color.RED);
-		g.drawArc(100, 250, 150, 120, 0, 180);
+		g.drawArc(110, 175, 150, 120, 180, 180);
 	}
 
 }

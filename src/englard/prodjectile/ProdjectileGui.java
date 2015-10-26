@@ -7,15 +7,17 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ProdjectileGui extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3068476851518602433L;
 	private JLabel label1;
 	private JLabel label2;
 	private JLabel label3;
@@ -25,21 +27,26 @@ public class ProdjectileGui extends JFrame {
 	private JButton enter;
 	private JLabel output;
 
+	// private ProdjectileArcComponent movement;
+
 	public ProdjectileGui() {
 		setTitle("Prodjectile Calculator");
 		setSize(400, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		Container container = getContentPane();
-		setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 
 		label1 = new JLabel("Angle");
+		label2 = new JLabel("velocity");
+		label3 = new JLabel("time");
 		Font type = new Font("Courier New", Font.ITALIC, 20);
 		label1.setFont(type);
 		label1.setForeground(Color.MAGENTA);
-		label2 = new JLabel("velocity");
-		label3 = new JLabel("time");
-
+		label2.setFont(type);
+		label2.setForeground(Color.MAGENTA);
+		label3.setFont(type);
+		label3.setForeground(Color.MAGENTA);
 		textField1 = new JTextField();
 		Dimension size = new Dimension(400, 200);
 		textField1.setMaximumSize(size);
