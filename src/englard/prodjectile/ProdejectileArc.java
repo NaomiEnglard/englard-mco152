@@ -18,7 +18,7 @@ public class ProdejectileArc extends JFrame {
 		BorderLayout layout = new BorderLayout();
 		Container container = getContentPane();
 		container.setLayout(layout);
-		container.add(new ProdjectileArcComponent(31.0,20.0,3), layout.CENTER);
+		container.add(new ProdjectileArcComponent(31.0,20.0,20), layout.CENTER);
 		
 		
 		
