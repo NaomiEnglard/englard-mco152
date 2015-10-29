@@ -55,14 +55,14 @@ public class SmileComponent extends JComponent {
 		x =mousePostion.x;
 		y= mousePostion.y;
 		
-		g.fillOval(210, 135, 50, 50);
-		g.fillOval(90, 135, 50, 50);
+		g.fillOval(210, 135, 60, 60);
+		g.fillOval(90, 135, 60, 60);
 		g.setColor(Color.WHITE);
 		
 		
 		
-		g.fillOval(x/30+90, y/30+150, 20, 20);
-		g.fillOval(x/30+210, y/30+150, 20, 20);
+		g.fillOval(x/30+90, y/30+150, 12, 12);
+		g.fillOval(x/30+210, y/30+150, 12, 12);
 		
 		super.repaint();
 		
