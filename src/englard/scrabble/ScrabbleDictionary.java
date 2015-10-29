@@ -8,8 +8,12 @@ import java.util.HashSet;
 public class ScrabbleDictionary {
 
 	private HashSet<String> wordSet;
+	public static ScrabbleDictionary singleton;
 
 	public ScrabbleDictionary() throws IOException {
+		
+		//TODO load from file
+		
 		wordSet = new HashSet<String>();
 		BufferedReader in = new BufferedReader(new FileReader("./us.dic"));
 		String word;
@@ -26,5 +30,12 @@ public class ScrabbleDictionary {
 	 */
 	public boolean contains(String word) {
 		return (wordSet.contains(word));
+	}
+	
+	public static ScrabbleDictionary getInstance() throws IOException{
+		if(singleton == null){
+			singleton = new ScrabbleDictionary(); 
+		}
+		return singleton;
 	}
 }
