@@ -57,6 +57,7 @@ public class JFrameDemo extends JFrame{
 		add(button);
 		
 		label4 = new JLabel();
+		add(label4);
 		
 		button.addActionListener(new ActionListener(){
 			@Override
@@ -66,12 +67,10 @@ public class JFrameDemo extends JFrame{
 				double c  = Double.parseDouble(textField3.getText());
 				QuadraticEquation q;
 				try {
-					//System.out.println("in try");
 					q = new QuadraticEquation(a,b,c);
 					Double answer = q.getNegativeX();
 					Double answer2= q.getPositiveX();
-					label4.setText(answer.toString()+ answer2.toString());
-
+					label4.setText(answer.toString()+ " " + answer2.toString());
 				} catch (InvalidInputException e) {
 					System.exit(1);
 				}

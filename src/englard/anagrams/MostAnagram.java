@@ -72,8 +72,7 @@ public class MostAnagram {
 				System.out.println(word.getWord());
 			}
 		}
-		// System.out.println(most);
-		// System.out.println(otherMost);
+		
 
 	}
 }
