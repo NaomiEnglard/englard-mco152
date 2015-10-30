@@ -10,7 +10,7 @@ public class ScrabbleDictionary {
 	private HashSet<String> wordSet;
 	public static ScrabbleDictionary singleton;
 
-	public ScrabbleDictionary() throws IOException {
+	private ScrabbleDictionary() throws IOException {
 		
 		//TODO load from file
 		
