@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class PythagoreanTheoremTest {
+
 	@Test
 	public void testSetAB() throws InvalidDataException {
 		PythagoreanTheorem pT = new PythagoreanTheorem();
