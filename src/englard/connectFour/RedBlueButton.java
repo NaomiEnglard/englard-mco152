@@ -12,8 +12,8 @@ public class RedBlueButton extends JButton implements ActionListener {
 	private int turn;
 
 	public RedBlueButton() {
-		RED = new ImageIcon(this.getClass().getResource("./RedPiece.png"));
 		BLUE = new ImageIcon(this.getClass().getResource("./BluePiece.png"));
+		RED = new ImageIcon(this.getClass().getResource("./RedPiece.png"));
 		this.addActionListener(this);
 		this.turn = 0;
 	}
