@@ -31,8 +31,11 @@ public class BoardFrame extends JFrame{
 			p.add(listButtons[i]);
 		}
 		add(p);
-		//container.setBackground(Color.GRAY);
 		
+		//ConnectFourGame play = new ConnectFourGame();
+		//connect the click to get which one was clicked and check if valid spot, if yes show correct color piece
+		//int color  =play.getWhoseTurn();
+		//listButton[1] = color;		
 		
 		
 		
