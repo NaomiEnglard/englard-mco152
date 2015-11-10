@@ -1,4 +1,7 @@
 package englard.connectFour;
+/*
+ * Use with a main
+ */
 
 import englard.math.InvalidDataException;
 
@@ -20,7 +23,7 @@ public class ConnectFourGame {
 	 * 
 	 * @return return winner or if there is no winner return null
 	 */
-	public int takeTurn(int column) throws FilledException,
+	public Integer takeTurn(int column) throws FilledException,
 			InvalidDataException {
 		if (!this.connectFourBoard.isFull()) {
 			this.connectFourBoard.addPieceToColumn(column, whoseTurn);
@@ -38,5 +41,8 @@ public class ConnectFourGame {
 			this.whoseTurn = 1;
 		}
 	}
+	 public int getWhoseTurn(){
+		 return whoseTurn;
+	 }
 
 }

@@ -17,9 +17,11 @@ public class Board {
 	 * 
 	 * @param slotNo - the slot you want to put a piece in, slot numbers start
 	 * at 1 and go from left to right
+	 * @return send back row piece is put in
 	 */
-	public void addPieceToColumn(int slotNO, int whoseTurn)
+	public int addPieceToColumn(int slotNO, int whoseTurn)
 			throws FilledException, InvalidDataException {
+		int row;
 		if (this.isFull()) { // if board is not full
 			throw new FilledException();
 		}
@@ -30,13 +32,14 @@ public class Board {
 													// -all leght are same
 				// add a piece to the next position in the slot
 				this.board[slotNO][piecesInSlot] = whoseTurn;
+				row =piecesInSlot;
 			} else {
 				throw new FilledException();
 			}
 		}else{
 			throw new InvalidDataException();
 		}
-
+		return row;
 	}
 
 	private int numberFilled(int slotNO) {

@@ -19,7 +19,7 @@ public class RedBlueButton extends JButton implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		//turn++;
+		turn++;
 		turn %= 3;
 		switch(turn){
 		case 0:
