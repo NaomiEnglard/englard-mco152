@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import englard.gui.SmileFrame;
 import englard.math.InvalidDataException;
 
 import java.awt.Color;
@@ -20,7 +21,6 @@ public class BoardFrame extends JFrame {
 	private JButton[] button;
 	private JLabel[] grid;
 	private ConnectFour game;
-	
 
 	public BoardFrame() {
 		setTitle("Connect Four");
@@ -34,85 +34,83 @@ public class BoardFrame extends JFrame {
 		try {
 			game = new ConnectFour();
 		} catch (InvalidDataException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, "contanct It");
 		}
 
 		this.button = new JButton[7];
 		for (int i = 0; i < 7; i++) {
-			//button[i].addActionListener(arg0);
+			// button[i].addActionListener(arg0);
 			p.add(button[i] = new JButton(new ImageIcon(this.getClass()
 					.getResource("./downArrow.png"))));
 		}
 
 		this.grid = new JLabel[42];
 		for (int i = 0; i < 42; i++) {
-			grid[i] = new JLabel(String.valueOf(i));
+			grid[i] = new JLabel();
+			grid[i].setOpaque(true);
 			grid[i].setBorder(new LineBorder(Color.BLACK));
+			grid[i].setBackground(Color.YELLOW);
+			//grid[i].add(new WhiteCircle());
 			p.add(grid[i]);
 		}
 
 		add(p);
 
-		button[0].addActionListener(new ActionListener() {
+		for (int i = 0; i < this.button.length; i++) {
+			button[i].addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) {
+					int row = 0;
+					Object source = e.getSource();
+					for (int i = 0; i < 7; i++) {
+						if (source == button[i]) {
+							row = i;
+						}
+					}
+					try {
+						ImageIcon player = game.getPlayerImage();
+						row = game.takeTurn(row);
+						grid[row].setIcon(player);
+						if (game.winner() != null) {
+							String won = null;
+							if (game.winner() == 1) {
+								won = "RED";
+							} else {
+								won = "BLUE";
+							}
+							new WinnerFrame(won);
+							stopGame();
+						} else if (game.isFull()) {
+							full();
+						}
 
-				int row = 0;
-				try {
-					row = game.takeTurn(1);
-				} catch (InvalidDataException | FilledException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					} catch (FilledException e1) {
+						JOptionPane.showMessageDialog(null,
+								"That column is full already");
+					} catch (InvalidDataException e1) {
+						JOptionPane.showMessageDialog(null, "Get it help");
+					}
+
 				}
-				System.out.println(row);
 
-				switch (row) {
-				case 0:
-					row = 35;
-					break;
-				case 1:
-					row = 28;
-					break;
-				case 2:
-					row = 21;
-					break;
-				case 3:
-					row = 14;
-					break;
-				case 4:
-					row = 7;
-					break;
-				case 5:
-					row = 0;
-					break;
-
+				private void full() {
+					JOptionPane
+							.showMessageDialog(null,
+									"There is no winner and the board is full the game is now over");
+					stopGame();
 				}
-				grid[row].setIcon(game.getPlayerImage());
-				// grid[counter].setIcon(new
-				// ImageIcon(this.getClass().getResource(game.getPlayerImage())));
 
-			}
-
-			private void winner(int winner) {
-				JOptionPane.showMessageDialog(null, "Great Job player "
-						+ winner + "winns");
-
-			}
-
-			private void full() {
-				JOptionPane
-						.showMessageDialog(null,
-								"There is no winner and the board is full the game is now over");
-				// make all buttons stop working if the board is full
-				for (int i = 0; i < 7; i++) {
-					for (ActionListener a : button[i].getActionListeners()) {
-						button[i].removeActionListener(a);
+				private void stopGame() {
+					// make all buttons stop working if the board is full
+					for (int i = 0; i < 7; i++) {
+						for (ActionListener a : button[i].getActionListeners()) {
+							button[i].removeActionListener(a);
+						}
 					}
 				}
-			}
 
-		});
+			});
+		}
 
 	}
 

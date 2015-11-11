@@ -11,18 +11,18 @@ import englard.math.InvalidDataException;
 public class ConnectFour {
 
 	private Board game;
-	private Player one;
-	private Player two;
+	private Player a;
+	private Player b;
 	private Player whoseTurn;
 	
 
 	public ConnectFour() throws InvalidDataException {
 		game = new Board();
-		one = new Player(1, new ImageIcon(this.getClass().getResource(
-				"./RedPiece.png")));
-		two = new Player(2, new ImageIcon(this.getClass().getResource(
-				"./BluePiece.png")));
-		whoseTurn = one; // start with red
+		a = new Player(1, new ImageIcon(this.getClass().getResource(
+				"./RedPiece.png")), "Red");
+		b = new Player(2, new ImageIcon(this.getClass().getResource(
+				"./BluePiece.png")), "Blue");
+		whoseTurn = a; // start with red
 		
 		
 
@@ -32,10 +32,10 @@ public class ConnectFour {
 	 * switch players turn
 	 */
 	private void changeTurn() {
-		if (whoseTurn == one) {
-			whoseTurn = two;
+		if (whoseTurn == a) {
+			whoseTurn = b;
 		} else {
-			whoseTurn = one;
+			whoseTurn = a;
 		}
 	}
 
@@ -44,7 +44,7 @@ public class ConnectFour {
 	 */
 	public int takeTurn(int slot) throws InvalidDataException, FilledException {
 		int numInSlot = 0;
-		if (slot < 0 || slot > 7) {
+		if (slot <0 || slot > 7) {
 			throw new InvalidDataException();
 		} else {
 			if (!game.isFull()) {
@@ -55,7 +55,7 @@ public class ConnectFour {
 		}
 		//return the number coresponding to the 
 		//JLabel [] index, from 0-41 that the piece should go into
-		return (slot-1) + 7* (5 - numInSlot);
+		return (slot) + 7* (5 - numInSlot);
 	}
 
 	
@@ -72,5 +72,9 @@ public class ConnectFour {
 	 */
 	public Integer winner() {
 		return game.winner();
+	}
+	
+	public boolean isFull(){
+		return game.isFull();
 	}
 }
