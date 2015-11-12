@@ -1,8 +1,5 @@
 package englard.connectFour;
 
-import java.util.ArrayList;
-import java.util.Stack;
-
 import englard.math.InvalidDataException;
 
 public class Board {

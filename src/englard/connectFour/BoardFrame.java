@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import englard.gui.SmileFrame;
 import englard.math.InvalidDataException;
 
 import java.awt.Color;
@@ -17,6 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BoardFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel p;
 	private JButton[] button;
 	private JLabel[] grid;
@@ -30,16 +33,18 @@ public class BoardFrame extends JFrame {
 
 		p = new JPanel();
 		p.setLayout(new GridLayout(7, 7));
+		p.setOpaque(true);
+		p.setBackground(Color.YELLOW);
+		p.setBorder(new LineBorder(Color.BLACK, 3));
 
 		try {
 			game = new ConnectFour();
 		} catch (InvalidDataException e1) {
-			JOptionPane.showMessageDialog(null, "contanct It");
+			JOptionPane.showMessageDialog(null, "contanct I.T.");
 		}
 
 		this.button = new JButton[7];
 		for (int i = 0; i < 7; i++) {
-			// button[i].addActionListener(arg0);
 			p.add(button[i] = new JButton(new ImageIcon(this.getClass()
 					.getResource("./downArrow.png"))));
 		}
@@ -47,10 +52,8 @@ public class BoardFrame extends JFrame {
 		this.grid = new JLabel[42];
 		for (int i = 0; i < 42; i++) {
 			grid[i] = new JLabel();
-			grid[i].setOpaque(true);
-			grid[i].setBorder(new LineBorder(Color.BLACK));
-			grid[i].setBackground(Color.YELLOW);
-			//grid[i].add(new WhiteCircle());
+			grid[i].setIcon(new ImageIcon(this.getClass().getResource(
+					"./WhitePiece.png")));
 			p.add(grid[i]);
 		}
 
@@ -80,6 +83,7 @@ public class BoardFrame extends JFrame {
 							}
 							new WinnerFrame(won);
 							stopGame();
+							
 						} else if (game.isFull()) {
 							full();
 						}
@@ -114,8 +118,5 @@ public class BoardFrame extends JFrame {
 
 	}
 
-	public static void main(String args[]) {
-		BoardFrame frame = new BoardFrame();
-		frame.setVisible(true);
-	}
+	
 }
