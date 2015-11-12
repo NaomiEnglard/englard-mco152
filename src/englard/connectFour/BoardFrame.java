@@ -54,6 +54,7 @@ public class BoardFrame extends JFrame {
 			grid[i] = new JLabel();
 			grid[i].setIcon(new ImageIcon(this.getClass().getResource(
 					"./WhitePiece.png")));
+			
 			p.add(grid[i]);
 		}
 
