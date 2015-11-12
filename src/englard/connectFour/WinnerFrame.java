@@ -51,7 +51,6 @@ public class WinnerFrame extends JFrame {
 
 		text.setFont(new Font("Courier New", Font.BOLD, 22));
 		text.setHorizontalAlignment(JLabel.CENTER);
-		text.setVerticalAlignment(JLabel.CENTER);
 
 		if (winner.equalsIgnoreCase("blue")) {
 			panel.setBackground(Color.BLUE);
@@ -59,7 +58,7 @@ public class WinnerFrame extends JFrame {
 			panel.setBackground(Color.RED);
 
 		}
-
+		
 		panel.add(text);
 		panel.add(playAgain);
 		panel.add(yes);
