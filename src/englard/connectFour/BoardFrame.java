@@ -45,16 +45,14 @@ public class BoardFrame extends JFrame {
 
 		this.button = new JButton[7];
 		for (int i = 0; i < 7; i++) {
-			p.add(button[i] = new JButton(new ImageIcon(this.getClass()
-					.getResource("./downArrow.png"))));
+			p.add(button[i] = new JButton(new ImageIcon(this.getClass().getResource("./downArrow.png"))));
 		}
 
 		this.grid = new JLabel[42];
 		for (int i = 0; i < 42; i++) {
 			grid[i] = new JLabel();
-			grid[i].setIcon(new ImageIcon(this.getClass().getResource(
-					"./WhitePiece.png")));
-			
+			grid[i].setIcon(new ImageIcon(this.getClass().getResource("./WhitePiece.png")));
+
 			p.add(grid[i]);
 		}
 
@@ -84,14 +82,13 @@ public class BoardFrame extends JFrame {
 							}
 							new WinnerFrame(won);
 							stopGame();
-							
+
 						} else if (game.isFull()) {
 							full();
 						}
 
 					} catch (FilledException e1) {
-						JOptionPane.showMessageDialog(null,
-								"That column is full already");
+						JOptionPane.showMessageDialog(null, "That column is full already");
 					} catch (InvalidDataException e1) {
 						JOptionPane.showMessageDialog(null, "Get it help");
 					}
@@ -100,8 +97,7 @@ public class BoardFrame extends JFrame {
 
 				private void full() {
 					JOptionPane
-							.showMessageDialog(null,
-									"There is no winner and the board is full the game is now over");
+							.showMessageDialog(null, "There is no winner and the board is full the game is now over");
 					stopGame();
 				}
 
@@ -119,5 +115,4 @@ public class BoardFrame extends JFrame {
 
 	}
 
-	
 }

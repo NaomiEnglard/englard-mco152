@@ -14,6 +14,7 @@ public class AirplaneSeats {
 	private HashMap<String, Character> seatMap;
 	private int rows;
 	private int columns;
+	
 
 	/**
 	 * @param rows

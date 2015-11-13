@@ -169,54 +169,5 @@ public class Board {
 		return null;
 	}
 
-	/*
-	 * public static void main(String args[]) throws FilledException,
-	 * InvalidDataException {
-	 * 
-	 * Board connectBoard = new Board(); connectBoard.addPieceToColumn(1, 4);
-	 * connectBoard.addPieceToColumn(2, 5); connectBoard.addPieceToColumn(3,
-	 * 16); connectBoard.addPieceToColumn(4, 12);
-	 * connectBoard.addPieceToColumn(5, 12); connectBoard.addPieceToColumn(6,
-	 * 13); connectBoard.addPieceToColumn(7, 15);
-	 * 
-	 * connectBoard.addPieceToColumn(1, 21); connectBoard.addPieceToColumn(2,
-	 * 21); connectBoard.addPieceToColumn(3, 41);
-	 * connectBoard.addPieceToColumn(4, 2); connectBoard.addPieceToColumn(5,
-	 * 12); connectBoard.addPieceToColumn(6, 71);
-	 * connectBoard.addPieceToColumn(7, 81);
-	 * 
-	 * connectBoard.addPieceToColumn(1, 51); connectBoard.addPieceToColumn(2,
-	 * 16); connectBoard.addPieceToColumn(3, 2);
-	 * connectBoard.addPieceToColumn(4, 18); connectBoard.addPieceToColumn(5,
-	 * 15); connectBoard.addPieceToColumn(6, 12);
-	 * connectBoard.addPieceToColumn(7, 14);
-	 * 
-	 * connectBoard.addPieceToColumn(1, 1); connectBoard.addPieceToColumn(2, 2);
-	 * connectBoard.addPieceToColumn(3, 3); connectBoard.addPieceToColumn(4, 4);
-	 * connectBoard.addPieceToColumn(5, 5); connectBoard.addPieceToColumn(6, 6);
-	 * connectBoard.addPieceToColumn(7, 7);
-	 * System.out.println(connectBoard.winner());
-	 * 
-	 * 
-	 * connectBoard.addPieceToColumn(1, 2); connectBoard.addPieceToColumn(2, 3);
-	 * connectBoard.addPieceToColumnn(3, 4); connectBoard.addPieceToColumn(4,
-	 * 5); connectBoard.addPieceToColumn(5, 6); connectBoard.addPieceToColumn(6,
-	 * 7); connectBoard.addPieceToColumn(7, 1);
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * System.out.println(connectBoard.winner());
-	 * connectBoard.addPieceToColumn(3, 1);
-	 * System.out.println(connectBoard.winner());
-	 * connectBoard.addPieceToColumn(4, 1);
-	 * System.out.println(connectBoard.winner());
-	 * connectBoard.addPieceToColumn(5, 1);
-	 * System.out.println(connectBoard.winner());
-	 * connectBoard.addPieceToColumn(6, 1);
-	 * System.out.println(connectBoard.winner());
-	 * 
-	 * }
-	 */
+
 }
