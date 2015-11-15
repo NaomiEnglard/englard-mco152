@@ -79,13 +79,13 @@ public class Board {
 		if (winner != null) {
 			return winner;
 		}
-		// negative slop diagnal test
-		winner = negativeDiagnalWinner();
+		// negative slop diagonal test
+		winner = negativeDiagonalWinner();
 		if (winner != null) {
 			return winner;
 		}
 		// positive slop diagnal test
-		winner = positiveDiagnalWinner();
+		winner = positiveDiagonalWinner();
 		if (winner != null) {
 			return winner;
 		}
@@ -131,7 +131,7 @@ public class Board {
 		return null; // if did not find a winner return null
 	}
 
-	private Integer positiveDiagnalWinner() {
+	private Integer positiveDiagonalWinner() {
 
 		for (int slot = 0; slot < board.length - 3; slot++) {
 			for (int height = 0; height < board[slot].length - 3; height++) {
@@ -150,7 +150,7 @@ public class Board {
 		return null;
 	}
 
-	private Integer negativeDiagnalWinner() {
+	private Integer negativeDiagonalWinner() {
 		for (int slot = 0; slot < board.length - 3; slot++) {
 			for (int height = 3; height < board[slot].length; height++) {
 				// start at slot o height 3 since there is not enough room to

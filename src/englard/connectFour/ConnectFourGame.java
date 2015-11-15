@@ -4,11 +4,8 @@ import javax.swing.ImageIcon;
 
 import englard.math.InvalidDataException;
 
-/*
- * use with gui
- */
 
-public class ConnectFour {
+public class ConnectFourGame {
 
 	private Board game;
 	private Player a;
@@ -16,7 +13,7 @@ public class ConnectFour {
 	private Player whoseTurn;
 	
 
-	public ConnectFour() throws InvalidDataException {
+	public ConnectFourGame() throws InvalidDataException {
 		game = new Board();
 		a = new Player(1, new ImageIcon(this.getClass().getResource(
 				"./RedPiece.png")), "Red");
