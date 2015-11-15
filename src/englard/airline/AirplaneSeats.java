@@ -15,6 +15,7 @@ public class AirplaneSeats {
 	private HashMap<String, Character> seatMap;
 	private int rows;
 	private int columns;
+	private int numSeatsFilled;
 
 	/**
 	 * @param rows
@@ -68,6 +69,7 @@ public class AirplaneSeats {
 			throw new AlreadyReservedException();
 		} else {
 			seatMap.replace(seatName, '#');
+			this.numSeatsFilled++;
 		}
 	}
 
@@ -190,13 +192,8 @@ public class AirplaneSeats {
 	 * @return true if the plane is full, otherwise false.
 	 */
 	public boolean isPlaneFull() {
-		for (Map.Entry<String, Character> mapValue : seatMap.entrySet()) {
-			if (mapValue.getValue() == 'o') {
-				return false;
-			}
-		}
 
-		return true;
+		return rows * columns == numSeatsFilled;
 	}
 
 }
