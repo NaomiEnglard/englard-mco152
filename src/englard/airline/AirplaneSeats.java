@@ -2,6 +2,7 @@ package englard.airline;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -14,7 +15,6 @@ public class AirplaneSeats {
 	private HashMap<String, Character> seatMap;
 	private int rows;
 	private int columns;
-	
 
 	/**
 	 * @param rows
@@ -34,7 +34,6 @@ public class AirplaneSeats {
 		StringBuilder builder = new StringBuilder();
 		for (int r = 0; r < rows; r++) {
 			for (int c = 0; c < columns; c++) {
-
 				// convert row number to letter
 				char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 				String letter = Character.toString(alphabet[c]);
@@ -60,7 +59,8 @@ public class AirplaneSeats {
 	 *             if the seat is outside the columns and rows set in the
 	 *             constructor
 	 */
-	public void reserve(String seatName) throws AlreadyReservedException, SeatOutOfBoundsException {
+	public void reserve(String seatName) throws AlreadyReservedException,
+			SeatOutOfBoundsException {
 		if (!seatMap.containsKey(seatName)) {
 			throw new SeatOutOfBoundsException();
 		}
@@ -93,7 +93,8 @@ public class AirplaneSeats {
 	 *             if one of the seats is outside the columns and rows set in
 	 *             the constructor
 	 */
-	public void reserveAll(String... seatNames) throws AlreadyReservedException, SeatOutOfBoundsException {
+	public void reserveAll(String... seatNames)
+			throws AlreadyReservedException, SeatOutOfBoundsException {
 		for (String seatName : seatNames) {
 			reserve(seatName);
 		}
@@ -119,43 +120,25 @@ public class AirplaneSeats {
 			build.append(Character.toString(alphabet[i]));// append letter for
 															// each column in
 															// the plane
-
 		}
 
 		int counter = 0;
 
-		StringBuilder makeString = new StringBuilder();
-		for (int c = 0; c < this.columns; c++) { // go through each column
+		String seat;
+		for (int r = 0; r < this.rows; r++) { // go through each column
 			build.append("\n");
 			build.append(++counter);
 			build.append(" ");
-			for (int r = 0; r < this.rows; r++) {
-				String letter = Character.toString(alphabet[c]);
-				makeString.append(letter);
-				makeString.append(r + 1);// there is not a seat zero, so
-											// position 0
+			for (int c = 0; c < this.columns; c++) {
+				seat = getSeatName(r, c);
 				// is seat 1
 				// all seats start empty
 
-				build.append(seatMap.get(makeString.toString()));
-				makeString.setLength(0);
-			}
+				build.append(seatMap.get(seat));
 
+			}
 		}
-		/*
-		 * char row; char previousRow = '1'; for (Map.Entry<String, Character>
-		 * mapValue : seatMap.entrySet()) { // if the second character in the
-		 * value returned is a number that is // the same as the one before
-		 * print on same line String seat = mapValue.getKey(); row =
-		 * seat.charAt(1); if (row == previousRow) {
-		 * build.append(mapValue.getValue()); previousRow = row; }else{ //add
-		 * the row number as long as if(counter + 1 < rows){ build.append("\n");
-		 * build.append(++counter); build.append(" ");
-		 * 
-		 * } }
-		 * 
-		 * }
-		 */
+		build.append("\n");
 		return build.toString();
 	}
 
@@ -170,48 +153,37 @@ public class AirplaneSeats {
 	 * @throws NotEnoughSeatsException
 	 *             if there are not enough seats together to reserve.
 	 */
-	public ArrayList<String> reserveGroup(int numberOfSeatsTogether) throws NotEnoughSeatsException {
-		if (numberOfSeatsTogether > this.rows) {
+	public ArrayList<String> reserveGroup(int numberOfSeatsTogether)
+			throws NotEnoughSeatsException {
+		if (numberOfSeatsTogether > this.columns) {
 			throw new NotEnoughSeatsException();
 		}
-		ArrayList<Character> rowSpots = new ArrayList<Character>();
-		ArrayList<String> groupSeatList = new ArrayList<String>();
-		StringBuilder builder = new StringBuilder();
+		ArrayList<String> availbleSeats = new ArrayList<String>();
 		for (int c = 0; c < columns; c++) {
 			for (int r = 0; r < rows; r++) {
-				// convert row number to letter
-				char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-				String letter = Character.toString(alphabet[c]);
-				builder.append(letter);
-				builder.append(r + 1);// there is not a seat zero, so position 0
-										// is seat 1
-				// all seats start empty
-				rowSpots.add(seatMap.get(builder.toString()));
-
-				builder.setLength(0);
-			}
-			// after each row check if that row has the amount of seats u want
-			// in a row
-			int counter = 0;
-			for (int i = 0; i < rowSpots.size(); i++) {
-				if (rowSpots.get(i) == 'o') {
-					counter++;
-					// add the seat that is not empty
-					// groupSeatList.add();
+				String seat = getSeatName(r, c);
+				if (!isReserved(seat)) {
+					availbleSeats.add(seat);
+					if (availbleSeats.size() == numberOfSeatsTogether) {
+						return availbleSeats;
+					}
 				} else {
-					counter = 0;
-					groupSeatList = null;
+					availbleSeats.clear();
 				}
-
 			}
-			if (counter == numberOfSeatsTogether) {
-				return groupSeatList;
-			}
-			rowSpots = null;
-
 		}
 
 		return null;
+	}
+
+	private String getSeatName(int r, int c) {
+		StringBuilder build = new StringBuilder();
+		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+		String letter = Character.toString(alphabet[c]);
+		build.append(letter);
+		build.append(r + 1);// there is not a seat zero, so position 0
+							// is seat 1
+		return (build.toString());
 	}
 
 	/**
