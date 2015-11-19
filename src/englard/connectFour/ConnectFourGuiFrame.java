@@ -1,5 +1,9 @@
 package englard.connectFour;
 
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,11 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import englard.math.InvalidDataException;
-
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ConnectFourGuiFrame extends JFrame {
 	/**
@@ -48,17 +47,15 @@ public class ConnectFourGuiFrame extends JFrame {
 		ActionListener some = new ButtonListener(button, game, grid);
 		for (int i = 0; i < button.length; i++) {
 			// button[i].addActionListener(some);
-			button[i] = new JButton(new ImageIcon(this.getClass().getResource(
-					"./downArrow.png")));
+			button[i] = new JButton(new ImageIcon(this.getClass().getResource("./downArrow.png")));
 			button[i].addActionListener(some);
 			p.add(button[i]);
 		}
-
+		ImageIcon blank = new ImageIcon(this.getClass().getResource("./WhitePiece.png"));
 		// add 42 cells
 		for (int i = 0; i < 42; i++) {
 			grid[i] = new JLabel();
-			grid[i].setIcon(new ImageIcon(this.getClass().getResource(
-					"./WhitePiece.png")));
+			grid[i].setIcon(blank);
 
 			p.add(grid[i]);
 		}
