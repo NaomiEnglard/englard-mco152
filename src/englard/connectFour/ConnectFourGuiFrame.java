@@ -44,11 +44,11 @@ public class ConnectFourGuiFrame extends JFrame {
 		}
 
 		// add button per column
-		ActionListener some = new ButtonListener(button, game, grid);
+		ActionListener listner = new ButtonListener(button, game, grid);
 		for (int i = 0; i < button.length; i++) {
 			// button[i].addActionListener(some);
 			button[i] = new JButton(new ImageIcon(this.getClass().getResource("./downArrow.png")));
-			button[i].addActionListener(some);
+			button[i].addActionListener(listner);
 			p.add(button[i]);
 		}
 		ImageIcon blank = new ImageIcon(this.getClass().getResource("./WhitePiece.png"));
