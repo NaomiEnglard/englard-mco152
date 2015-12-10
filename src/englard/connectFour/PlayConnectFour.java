@@ -1,10 +1,9 @@
 package englard.connectFour;
 
-import java.io.IOException;
 
 public class PlayConnectFour {
 	public static void main(String args[]) {
-		BoardFrame frame = new BoardFrame();
+		ConnectFourGuiFrame frame = new ConnectFourGuiFrame();
 		frame.setVisible(true);
 	}
 }
