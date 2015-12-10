@@ -41,7 +41,7 @@ public class WeatherListner implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		String zip = this.zip.getText().trim();
-		String defaultURL = "http://api.openweathermap.org/data/2.5/weather?zip=XXXXX,us&appid=2de143494c0b295cca9337e1e96b00e0";
+		String defaultURL = "http://api.openweathermap.org/data/2.5/weather?zip=XXXXX,us&appid=2de143494c0b295cca9337e1e96b00e0&units=imperial";
 		String weatherURL = defaultURL.replace("XXXXX", zip);
 		URL url = null;
 		try {
