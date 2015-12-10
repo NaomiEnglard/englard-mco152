@@ -17,8 +17,7 @@ public class Board {
 	 * 
 	 * @return send back row piece is put in
 	 */
-	public int addPieceToColumn(int slotNO, int whoseTurn)
-			throws FilledException, InvalidDataException {
+	public int addPieceToColumn(int slotNO, int whoseTurn) throws FilledException, InvalidDataException {
 		int row;
 		if (this.isFull()) { // if board is not full
 			throw new FilledException();
@@ -100,8 +99,7 @@ public class Board {
 				// it
 				Integer player = board[slot][height];
 				if (player != null) {
-					if (player == board[slot - 1][height]
-							&& player == board[slot - 2][height]
+					if (player == board[slot - 1][height] && player == board[slot - 2][height]
 							&& player == board[slot - 3][height]) {
 						return player;
 					}
@@ -118,8 +116,7 @@ public class Board {
 				// to have 4 in a row need 4 pieces =third height spot
 				Integer player = board[slot][height];
 				if (player != null) {
-					if (player == board[slot][height - 1]
-							&& player == board[slot][height - 2]
+					if (player == board[slot][height - 1] && player == board[slot][height - 2]
 							&& player == board[slot][height - 3]) {
 						// return the winner that has 4 in a row
 						return board[slot][height];
@@ -139,8 +136,7 @@ public class Board {
 				// have four in a row daignaly before slot 3
 				Integer player = board[slot][height];
 				if (player != null) {
-					if (player == board[slot + 1][height + 1]
-							&& player == board[slot + 2][height + 2]
+					if (player == board[slot + 1][height + 1] && player == board[slot + 2][height + 2]
 							&& player == board[slot + 3][height + 3]) {
 						return player;
 					}
@@ -157,8 +153,7 @@ public class Board {
 				// have four in a row diagnally before slot 3
 				Integer player = board[slot][height];
 				if (player != null) {
-					if (player == board[slot + 1][height - 1]
-							&& player == board[slot + 2][height - 2]
+					if (player == board[slot + 1][height - 1] && player == board[slot + 2][height - 2]
 							&& player == board[slot + 3][height - 3]) {
 						return player;
 					}
@@ -168,6 +163,5 @@ public class Board {
 		}
 		return null;
 	}
-
 
 }
