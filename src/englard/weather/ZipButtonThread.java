@@ -23,14 +23,14 @@ import javax.swing.JTextField;
 import com.google.gson.Gson;
 import com.sun.net.ssl.HttpsURLConnection;
 
-public class WeatherListner implements ActionListener {
+public class ZipButtonThread  extends Thread  {
 
 	private JTextField zip;
 	private JLabel temp;
 	private JLabel description;
 	private JLabel pic;
 
-	public WeatherListner(JTextField zipFillBox, JLabel tempFillBox,
+	public ZipButtonThread(JTextField zipFillBox, JLabel tempFillBox,
 			JLabel descriptionFillBox, JLabel pic) throws IOException {
 		this.zip = zipFillBox;
 		this.temp = tempFillBox;
@@ -39,7 +39,7 @@ public class WeatherListner implements ActionListener {
 
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void run() {
 		String zip = this.zip.getText().trim();
 		String defaultURL = "http://api.openweathermap.org/data/2.5/weather?zip=XXXXX,us&appid=2de143494c0b295cca9337e1e96b00e0&units=imperial";
 		String weatherURL = defaultURL.replace("XXXXX", zip);
@@ -69,7 +69,8 @@ public class WeatherListner implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Not a valid zip");
 		}
 		
-
+		
 	}
+	
 
 }

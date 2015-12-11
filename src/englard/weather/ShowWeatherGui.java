@@ -69,8 +69,23 @@ public class ShowWeatherGui extends JFrame {
 		p.add(descriptionTitle);
 		p.add(descriptionFillBox);
 		add(p, BorderLayout.CENTER);
-		ActionListener listener = new WeatherListner(zipFillBox,tempFillBox,descriptionFillBox,pic);
-		getWeather.addActionListener(listener);
+		getWeather.addActionListener(new ActionListener() {
+ 
+            public void actionPerformed(ActionEvent e)
+            {
+        		ZipButtonThread zipThread;
+				try {
+					zipThread = new ZipButtonThread(zipFillBox,tempFillBox,descriptionFillBox,pic);
+					zipThread.run();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        	
+            }
+        });   
+			
+		
 
 	}
 
