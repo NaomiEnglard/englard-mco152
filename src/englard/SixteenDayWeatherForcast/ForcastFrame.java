@@ -68,7 +68,7 @@ public class ForcastFrame extends JFrame {
 					forcastURL = new URL(url);
 					ForcastThread thread = new ForcastThread(labelList,
 							forcastURL);
-					thread.run();
+					thread.start();
 					center.revalidate();
 
 				} catch (MalformedURLException e1) {

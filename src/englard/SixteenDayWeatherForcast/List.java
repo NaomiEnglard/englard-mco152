@@ -26,5 +26,7 @@ public class List {
 	public String getMain() {
 		return weather[0].getMain();
 	}
+	
+	
 
 }

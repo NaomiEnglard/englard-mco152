@@ -1,8 +1,10 @@
 package englard.SixteenDayWeatherForcast;
 
-
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+
+import com.sun.javafx.binding.StringFormatter;
 
 public class SixteenDayForcastInfo {
 
