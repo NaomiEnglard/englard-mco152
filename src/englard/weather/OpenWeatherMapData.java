@@ -26,13 +26,13 @@ public class OpenWeatherMapData {
 	 */
 	public double temp() {
 		double kelvin = Double.parseDouble(main.getTemp());
-		//double farenheit = kelvin * 9 / 5 - 459.67;
-		//farenheit = Double.parseDouble(new DecimalFormat("##.##")
-		//		.format(farenheit));
+		// double farenheit = kelvin * 9 / 5 - 459.67;
+		// farenheit = Double.parseDouble(new DecimalFormat("##.##")
+		// .format(farenheit));
 		return kelvin;
 	}
-	
-	public String icon(){
+
+	public String icon() {
 		return weather[0].getIcon();
 	}
 

@@ -43,8 +43,7 @@ public class ForcastThread extends Thread {
 				if (i == 0) {
 					info[counter++].setText("Today");
 				} else {
-					//info[counter++].setText("In " + i + " days");
-					info[counter++].setText(sixteenDay.getDate(i));
+					info[counter++].setText("In " + i + " days");
 				}
 
 				info[counter++].setIcon(new ImageIcon(image));

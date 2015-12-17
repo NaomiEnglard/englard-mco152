@@ -21,7 +21,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 public class ShowWeatherGui extends JFrame {
 	/**
 	 * 
@@ -52,8 +51,7 @@ public class ShowWeatherGui extends JFrame {
 		north.add(zipFillBox);
 		north.add(getWeather);
 		add(north, BorderLayout.NORTH);
-		
-		
+
 		pic = new JLabel("");
 		pic.setSize(100, 100);
 		add(pic, BorderLayout.EAST);
@@ -63,29 +61,26 @@ public class ShowWeatherGui extends JFrame {
 		descriptionTitle = new JLabel("Descrition:  ");
 		descriptionFillBox = new JLabel("");
 		JPanel p = new JPanel();
-		p.setLayout(new GridLayout(2,2));
+		p.setLayout(new GridLayout(2, 2));
 		p.add(tempTitle);
 		p.add(tempFillBox);
 		p.add(descriptionTitle);
 		p.add(descriptionFillBox);
 		add(p, BorderLayout.CENTER);
 		getWeather.addActionListener(new ActionListener() {
- 
-            public void actionPerformed(ActionEvent e)
-            {
-        		ZipButtonThread zipThread;
+
+			public void actionPerformed(ActionEvent e) {
+				ZipButtonThread zipThread;
 				try {
-					zipThread = new ZipButtonThread(zipFillBox,tempFillBox,descriptionFillBox,pic);
+					zipThread = new ZipButtonThread(zipFillBox, tempFillBox, descriptionFillBox, pic);
 					zipThread.run();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-        	
-            }
-        });   
-			
-		
+
+			}
+		});
 
 	}
 

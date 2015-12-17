@@ -23,19 +23,19 @@ import javax.swing.JTextField;
 import com.google.gson.Gson;
 import com.sun.net.ssl.HttpsURLConnection;
 
-public class ZipButtonThread  extends Thread  {
+public class ZipButtonThread extends Thread {
 
 	private JTextField zip;
 	private JLabel temp;
 	private JLabel description;
 	private JLabel pic;
 
-	public ZipButtonThread(JTextField zipFillBox, JLabel tempFillBox,
-			JLabel descriptionFillBox, JLabel pic) throws IOException {
+	public ZipButtonThread(JTextField zipFillBox, JLabel tempFillBox, JLabel descriptionFillBox, JLabel pic)
+			throws IOException {
 		this.zip = zipFillBox;
 		this.temp = tempFillBox;
 		this.description = descriptionFillBox;
-		this.pic =pic;
+		this.pic = pic;
 
 	}
 
@@ -46,12 +46,11 @@ public class ZipButtonThread  extends Thread  {
 		URL url = null;
 		try {
 			url = new URL(weatherURL);
-			HttpURLConnection connect = (HttpURLConnection) url
-					.openConnection();
+			HttpURLConnection connect = (HttpURLConnection) url.openConnection();
 			Gson gson = new Gson();
 			InputStreamReader isr = new InputStreamReader(connect.getInputStream());
 			BufferedReader br = new BufferedReader(isr);
-			OpenWeatherMapData weatherData = gson.fromJson(br , OpenWeatherMapData.class);
+			OpenWeatherMapData weatherData = gson.fromJson(br, OpenWeatherMapData.class);
 			StringBuilder tempBuilder = new StringBuilder();
 			tempBuilder.append(weatherData.temp());
 			tempBuilder.append(" F");
@@ -65,12 +64,10 @@ public class ZipButtonThread  extends Thread  {
 			isr.close();
 			br.close();
 		} catch (IOException e1) {
-		} catch(NullPointerException e1){
+		} catch (NullPointerException e1) {
 			JOptionPane.showMessageDialog(null, "Not a valid zip");
 		}
-		
-		
+
 	}
-	
 
 }
