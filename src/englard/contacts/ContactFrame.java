@@ -35,7 +35,7 @@ public class ContactFrame extends JFrame {
 				if (evt.getClickCount() == 2) {
 					// Double-click
 					int index = list.locationToIndex(evt.getPoint());
-					// System.out.println("you double clicked" + index);
+					
 
 					DetailedContactInfoFrame detail = new DetailedContactInfoFrame(contactList, model.get(index));
 					detail.setVisible(true);
