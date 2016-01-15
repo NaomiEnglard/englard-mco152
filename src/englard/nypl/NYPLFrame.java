@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
+import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -77,6 +80,7 @@ public class NYPLFrame extends JFrame {
 		previos.setEnabled(false);
 		NYPLFrame parent = this;
 		counter = 0;
+
 		search.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
