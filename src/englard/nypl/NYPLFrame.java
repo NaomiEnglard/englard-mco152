@@ -97,40 +97,31 @@ public class NYPLFrame extends JFrame {
 			}
 
 		});
-		search.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyPressed(java.awt.event.KeyEvent e) {
-				//System.out.println("enet");
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					listModel.removeAllElements();
-					String urlName = "http://api.repo.nypl.org/api/v1/items/search?q=XXX&publicDomainOnly=true";
-					urlName = urlName.replace("XXX", searchText.getText());
-					URL url;
-					try {
-						url = new URL(urlName);
-						Thread thread = new SearchThead(url, info, listModel, parent);
-						thread.start();
-						container.add(list, BorderLayout.WEST);
-					} catch (MalformedURLException e1) {
-						JOptionPane.showMessageDialog(null, "Malformed url");
-					}
-				}
-			}
-
-			@Override
-			public void keyReleased(java.awt.event.KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyTyped(java.awt.event.KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
+		/*
+		 * search.addKeyListener(new KeyListener() {
+		 * 
+		 * @Override public void keyPressed(java.awt.event.KeyEvent e) { //
+		 * System.out.println("enet"); if (e.getKeyCode() == KeyEvent.VK_ENTER)
+		 * { listModel.removeAllElements(); String urlName =
+		 * "http://api.repo.nypl.org/api/v1/items/search?q=XXX&publicDomainOnly=true"
+		 * ; urlName = urlName.replace("XXX", searchText.getText()); URL url;
+		 * try { url = new URL(urlName); Thread thread = new SearchThead(url,
+		 * info, listModel, parent); thread.start(); container.add(list,
+		 * BorderLayout.WEST); } catch (MalformedURLException e1) {
+		 * JOptionPane.showMessageDialog(null, "Malformed url"); } } }
+		 * 
+		 * @Override public void keyReleased(java.awt.event.KeyEvent arg0) { //
+		 * TODO Auto-generated method stub
+		 * 
+		 * }
+		 * 
+		 * @Override public void keyTyped(java.awt.event.KeyEvent arg0) { //
+		 * TODO Auto-generated method stub
+		 * 
+		 * }
+		 * 
+		 * });
+		 */
 
 		list.addListSelectionListener(new ListSelectionListener() {
 
