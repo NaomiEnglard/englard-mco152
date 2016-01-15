@@ -17,7 +17,7 @@ public class TwitterHandler extends AbstractHandler {
 		response.setContentType("text/html;charset=utf-8");
 		response.setStatus(HttpServletResponse.SC_OK);
 		baseRequest.setHandled(true);
-		response.getWriter().println("<h1>im good hi how are you </h1>");
+		response.getWriter().println("<h1>im  </h1>");
 		
 	}
 
