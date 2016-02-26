@@ -1,0 +1,9 @@
+User can enter a zip code and see a sixteen day weather forecast
+They will be showed a gui display of:
+
+1. The amount of days from today
+2. Picture of weather condition
+3. Weather condition description
+
+- Use multithreading 
+- download json from internet
