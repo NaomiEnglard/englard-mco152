@@ -1,0 +1,11 @@
+Airline Reservation system. 
+It holds seats that are reserved. 
+
+Reserve seats 
+Reserve group seats, the whole group must sit next to each other on the same row. Find the first available group of seats and reserve those seats.
+check if a seat is booked
+check if the plane is full
+display seats on plane - what is availbel and what is already full
+
+- use hashmap to quickly find available seats
+- use JUnit testing to test methods
